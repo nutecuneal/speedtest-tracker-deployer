@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+    app:
+        image: 'ghcr.io/alexjustesen/speedtest-tracker:latest'
+        #ports:
+        #  - '80:80'
+        environment:
+            - PUID=1000
+            - PGID=1000
+        volumes:
+            - '/$(pwd)/speedtest-tracker:/config'
+            - '/$(pwd)/speedtest-tracker/web:/etc/ssl/web'
+        networks:
+            - speedtest-net
+            - reverse-proxy
+        healthcheck:
+          test: [ 'CMD', 'curl', '-fs', 'http://localhost' ]
+          interval: 1m30s
+          timeout: 30s
+          retries: 3
+          start_period: 10s
+
+        deploy:
+          mode: global
+          restart_policy:
+            condition: on-failure
+            delay: 10s 
+            max_attempts: 3
+            window: 30s
+
+networks:
+  speedtest-net:
+    name: 'speedtest-net'
+    ipam:
+      driver: default
+      config:
+        - subnet: '172.18.0.0/28'
+  
+  reverse-proxy:
+    name: 'reverse-proxy'
+    external: true
+
