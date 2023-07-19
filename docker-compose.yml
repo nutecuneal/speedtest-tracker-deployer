@@ -2,31 +2,31 @@ version: '3.8'
 services:
     app:
         container_name: speedtest-tracker
-        image: 'ghcr.io/alexjustesen/speedtest-tracker:latest'
+        image: ajustesen/speedtest-tracker:0.11.17
         #ports:
         #  - '80:80'
         environment:
-            - PUID=1000
-            - PGID=1000
+            - PUID=1024
+            - PGID=1024
         volumes:
-            - '/$(pwd)/speedtest:/config'
-            - '/$(pwd)/speedtest/web:/etc/ssl/web'
+            - /hd/speedtest:/config
+            - /hd/speedtest/web:/etc/ssl/web
         networks:
             - speedtest-net
         restart: unless-stopped 
         healthcheck:
-          test: [ 'CMD', 'curl', '-fs', 'http://localhost' ]
-          interval: 1m30s
-          timeout: 30s
+          test: [ 'CMD', 'curl', '-fsI', 'http://localhost' ]
+          interval: 30s
+          timeout: 15s
           retries: 3
           start_period: 10s
 
 
 networks:
   speedtest-net:
-    name: 'speedtest-net'
+    name: speedtest-net
     ipam:
       driver: default
       config:
-        - subnet: '172.18.0.0/28'
+        - subnet: 172.18.0.0/28
   
