@@ -9,8 +9,8 @@ services:
             - PUID=1024
             - PGID=1024
         volumes:
-            - /hd/speedtest:/config
-            - /hd/speedtest/web:/etc/ssl/web
+            - /$(pwd)/speedtest-tracker:/config
+            - /$(pwd)/speedtest-tracker/web:/etc/ssl/web
         networks:
             - speedtest-net
         restart: unless-stopped 
