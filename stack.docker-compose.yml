@@ -27,6 +27,10 @@ services:
             delay: 5s 
             max_attempts: 5
             window: 10s
+          resources:
+            limits:
+              cpus: '0.40'
+              memory: 256M
 
 networks:
   speedtest-net:
@@ -36,4 +40,3 @@ networks:
       config:
         - subnet: 172.18.0.0/28
   
-
