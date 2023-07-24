@@ -103,4 +103,4 @@ reverse-proxy:
 
 ## 3. Configurando
 
-> Clique aqui para ir ao guia de configuração
+> [Clique aqui para ir ao guia de configuração](README.configuration.md)
