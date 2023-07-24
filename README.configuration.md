@@ -13,7 +13,7 @@
 - Na área ***Site Settings***:
   - **Site name**: Define o nome que será exibido no painel lateral e na tela de login.
   - **Timezone**: Escolha a região e o horário que vai ser exibido os seus testes.
-  - **Time format**: Define como será exibido o formato do tempo (default: mês,dia,ano,h:m:s). 
+  - **Time format**: Define como será exibido o formato do tempo (default: mês,dia,ano,h,m,s). 
   - **Content width**: Escolha como o resultado vai se comportar na largura da janela.
 - Na área ***Speedtest Settings***:
   - **Speedtest schedule**: Você define em um formato ***cron*** o período em que os testes devem ser realizados, você pode utilizar o [Cronhub](https://crontab.cronhub.io/) para auxiliar na configuração.
